@@ -1,23 +1,98 @@
 {
   "name": "pixiu",
-  "displayName": "PiXiu",
+  "displayName": "pixiu",
   "description": "You know, for silence",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "publisher": "pixiu",
+  "repository": "https://github.com/zpyoki/vscode",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.81.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:pixiu.helloWorld",
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
+  "icon": "favicon.png",
+  "galleryBanner": {
+    "color": "#ff3366",
+    "theme": "dark"
+  },
   "contributes": {
     "commands": [
       {
         "command": "pixiu.helloWorld",
-        "title": "Hello World"
+        "title": "初始化"
+      },
+      {
+        "command": "pixiu.nav",
+        "title": "查看明天"
+      },
+      {
+        "command": "pixiu.progress",
+        "title": "显示进度条"
       }
-    ]
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets.json"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "pixiu",
+          "title": "貔貅",
+          "icon": "./favicon.png"
+        }
+      ]
+    },
+    "views": {
+      "pixiu": [
+        {
+          "id": "c1",
+          "name": "超脱：踏天"
+        },
+        {
+          "id": "c2",
+          "name": "超脱：道无涯"
+        },
+        {
+          "id": "c3",
+          "name": "超脱：道源"
+        },
+        {
+          "id": "c4",
+          "name": "超脱：永恒"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "pixiu.nav",
+          "group": "navigation"
+        },
+        {
+          "when": "editorFocus",
+          "command": "pixiu.progress",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "editorFocus",
+          "command": "pixiu.nav",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
