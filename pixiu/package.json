@@ -13,11 +13,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:pixiu.helloWorld",
     "onStartupFinished"
   ],
   "main": "./dist/extension.js",
-  "icon": "favicon.png",
+  "icon": "logof.png",
   "galleryBanner": {
     "color": "#ff3366",
     "theme": "dark"
@@ -25,7 +24,15 @@
   "contributes": {
     "commands": [
       {
-        "command": "pixiu.helloWorld",
+        "command": "pixiu.hi",
+        "title": "Hi",
+        "icon": {
+          "light": "logo.png",
+          "dark": "logo.png"
+        }
+      },
+      {
+        "command": "pixiu.px",
         "title": "初始化"
       },
       {
@@ -48,7 +55,7 @@
         {
           "id": "pixiu",
           "title": "貔貅",
-          "icon": "./favicon.png"
+          "icon": "logo.png"
         }
       ]
     },
@@ -87,8 +94,8 @@
       ],
       "editor/title": [
         {
-          "when": "editorFocus",
-          "command": "pixiu.nav",
+          "when": "true",
+          "command": "pixiu.hi",
           "group": "navigation"
         }
       ]

@@ -73,6 +73,61 @@ const progress = vscode.commands.registerCommand('pixiu.progress', () => {
 exports["default"] = progress;
 
 
+/***/ }),
+/* 5 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode = __webpack_require__(2);
+const px = vscode.commands.registerCommand('pixiu.px', () => {
+    vscode.window.showInformationMessage('Welcome to use 曹操!');
+});
+exports["default"] = px;
+
+
+/***/ }),
+/* 6 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode = __webpack_require__(2);
+const config_1 = __webpack_require__(7);
+const welcome = () => {
+    console.log(`Congratulations, ${config_1.default.appName} is now active!`);
+    vscode.window.showInformationMessage(`${config_1.default.appName} is ready`);
+};
+exports["default"] = welcome;
+
+
+/***/ }),
+/* 7 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = {
+    appName: 'pixiu'
+};
+
+
+/***/ }),
+/* 8 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode = __webpack_require__(2);
+const hi = vscode.commands.registerCommand('pixiu.hi', () => {
+    let day = new Date();
+    day.setTime(day.getTime() + 24 * 60 * 60 * 1000);
+    let date = day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate();
+    vscode.window.showInformationMessage(`明天是: ${date}`);
+});
+exports["default"] = hi;
+
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -112,11 +167,14 @@ const msg_1 = __webpack_require__(1);
 const nav_1 = __webpack_require__(3);
 const progress_1 = __webpack_require__(4);
 // import hover from './lib/hover'
-// import px from './lib/px'
+const px_1 = __webpack_require__(5);
+const welcome_1 = __webpack_require__(6);
+const hi_1 = __webpack_require__(8);
 function activate(context) {
-    console.log('Congratulations, "PiXiu" is now active!');
-    // context.subscriptions.push(px)
+    (0, welcome_1.default)();
+    context.subscriptions.push(hi_1.default);
     context.subscriptions.push(msg_1.default);
+    context.subscriptions.push(px_1.default);
     context.subscriptions.push(nav_1.default);
     context.subscriptions.push(progress_1.default);
     // context.subscriptions.push(hover)
